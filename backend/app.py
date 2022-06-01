@@ -12,7 +12,7 @@ import bcrypt
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:04191961Jt!@localhost/ReceiKeep'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:@localhost/ReceiKeep'
 db = SQLAlchemy(app)
 CORS(app)
 app.config["JWT_SECRET_KEY"] = "04191961Jt!"  # Change this!
