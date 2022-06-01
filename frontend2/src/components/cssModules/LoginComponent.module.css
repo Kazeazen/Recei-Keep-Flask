@@ -1,0 +1,67 @@
+.outsideContainer {
+    display: inline-block;  
+    border: 2px solid #d3d3d3;
+    background-color:#618685;
+    margin: 2px;
+    position: relative;
+    top: 35%;
+    width: 35%;
+    height: 25%;
+    border-radius: 18px;
+    color: #fefbd8;
+}
+
+.textContainer {
+    display: inline-block;
+    width: 80%;
+    text-align: left;
+}
+
+.textContainer Label {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: .15em;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+#submitButton {
+    position: absolute;
+    right: 2px;
+    bottom: 2px;
+    border-radius: 15px;
+    border-color: grey;
+    -moz-border-radius: 5px;
+    font-weight:500;
+}
+
+.registerNewAccount {
+    position: absolute;
+    left: 50px;
+    font-size: 12px;
+}
+.registerNewAccount:hover {
+    color: #36486b;
+}
+.registerNewAccount:visited {
+    color: #4040a1;
+}
+
+.forgotPassword {
+    position: absolute;
+    right: 50px;
+    font-size: 12px;
+    color: #fefbd8;
+}
+
+.forgotPassword:hover {
+    color: #36486b;
+}
+
+.forgotPassword:visited {
+    color: #4040a1;
+}
+
+.generalTextColor {
+    color: #fefbd8;
+}
+

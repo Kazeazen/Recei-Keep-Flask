@@ -1,0 +1,23 @@
+.headers {
+    background-color: whitesmoke;
+    width: 100%;
+    border: 1px solid #4040a1;;
+    border-radius: 25px;
+    font-size: 20px;
+}
+.headers span {
+    color: grey;
+}
+
+
+.headers Link {
+    color: #fefbd8;
+}
+
+.headers Link:hover {
+    color: #36486b;
+}
+
+.headers Link:visited {
+    color: #4040a1;
+}

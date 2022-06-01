@@ -1,0 +1,40 @@
+.outsideContainer {
+    display: inline-block;  
+    border: 2px solid #d3d3d3;
+    padding: .2em;
+    background-color:#618685;
+    margin: 2px;
+    position: relative;
+    top: 35%;
+    width: 35%;
+    height: 35%;
+    border-radius: 18px;
+    color: #fefbd8;
+}
+
+.textContainer {
+    display: inline-block;
+    width: 80%;
+    text-align: left;
+}
+
+.textContainer Label {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 2%;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+#submitButton {
+    position: absolute;
+    right: 2px;
+    bottom: 2px;
+    border-radius: 15px;
+    border-color: grey;
+    -moz-border-radius: 5px;
+    font-weight: 500;
+}
+
+.generalTextColor {
+    color: #fefbd8;
+}
