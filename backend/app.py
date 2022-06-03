@@ -16,13 +16,13 @@ from werkzeug.utils import secure_filename
 from datetime import timedelta
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:04191961Jt!@localhost/ReceiKeep'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:@localhost/ReceiKeep'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(days=1)
 app.config["JWT_REFRESH_TOKEN_EXPIRES"] = timedelta(days=30)
 db = SQLAlchemy(app)
 CORS(app)
-app.config["JWT_SECRET_KEY"] = "04191961Jt!"  # Change this!
+app.config["JWT_SECRET_KEY"] = ""  # Change this!
 jwt = JWTManager(app)
 
 
