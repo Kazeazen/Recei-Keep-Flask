@@ -38,3 +38,11 @@
 .generalTextColor {
     color: #fefbd8;
 }
+
+.backToLogin:hover {
+    color: #36486b;
+}
+
+.backToLogin:visited {
+    color: #4040a1;
+}

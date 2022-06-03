@@ -5,6 +5,7 @@ import styles from "./cssModules/Header.module.css"
 import AuthContext from '../context/AuthContext';
 const Header = () => {
     let {authToken, logoutUser} = useContext(AuthContext)
+    
     return (
         <div className={styles.headers}>
             <span> | </span>
@@ -18,6 +19,7 @@ const Header = () => {
             <span> | </span>
             <Link to="/register">Register</Link>
             <span> | </span>
+            <Link to="/profile">Settings</Link>
         </div>
 
     )

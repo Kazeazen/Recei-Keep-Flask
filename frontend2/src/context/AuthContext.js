@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from 'react'
+import { createContext, useState} from 'react'
 import axios from "axios";
 import { useNavigate } from 'react-router-dom'
 import jwtDecode from 'jwt-decode';
@@ -10,9 +10,9 @@ export default AuthContext;
 export const AuthProvider = ({children}) => {
 
     const [authToken, setAuthToken] = useState(() => localStorage.getItem('authToken') ? JSON.parse(localStorage.getItem('authToken')) : null)
-
+    const [user, setUser] = useState(() => localStorage.getItem("authToken") ? jwtDecode(localStorage.getItem("authToken"))["sub"]["username"] : null)
     const navigate = useNavigate();
-
+    
     let loginUser = async(e) => {
         e.preventDefault()
         let data = await axios.post("http://localhost:5000/login", {
@@ -23,11 +23,12 @@ export const AuthProvider = ({children}) => {
         })
         if (data.status === 200) {
             setAuthToken(data.data)
+            setUser(data.data.access_token)
             localStorage.setItem("authToken", JSON.stringify(data.data))
             navigate("/")
         }
         else {
-            alert("Something went wrong!")
+            alert("Something went wrong.")
         }
     }
 
@@ -43,6 +44,7 @@ export const AuthProvider = ({children}) => {
         })
         if (data.status === 200) {
             setAuthToken(data.data)
+            setUser(data.data.access_token)
             localStorage.setItem("authToken", JSON.stringify(data.data))
             navigate("/")
         }
@@ -51,10 +53,9 @@ export const AuthProvider = ({children}) => {
             console.log(data)
         }
     }
-
-
     let logoutUser = () => {
         setAuthToken(null)
+        setUser(null)
         localStorage.removeItem("authToken")
         navigate("/login")
     }
@@ -63,7 +64,8 @@ export const AuthProvider = ({children}) => {
         loginUser:loginUser,
         authToken:authToken,
         logoutUser:logoutUser,
-        registerUser,registerUser
+        registerUser:registerUser,
+        user: user
     }
 
 

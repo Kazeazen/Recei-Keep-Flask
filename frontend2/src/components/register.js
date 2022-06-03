@@ -1,9 +1,11 @@
 import React, {useContext} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Label, Input, Form, Button, FormGroup} from 'reactstrap'
+import {Label, Input, Form, FormGroup} from 'reactstrap'
 import { Link } from 'react-router-dom'
 import styles from "./cssModules/Register.module.css"
 import AuthContext from '../context/AuthContext';
+
+
 const RegisterComponent = () => {
     let {registerUser} = useContext(AuthContext)
     return(
@@ -23,6 +25,7 @@ const RegisterComponent = () => {
                         <Input type="email" name="email" placeholder='example@example.com' id="registerEmailInput" />
                     </FormGroup>
                     <input type='submit' id = {styles.submitButton}/>
+                    <Link to="/login" className={styles.backToLogin}>Login</Link>
                 </Form>
             </div>
         </div>

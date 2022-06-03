@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import LoginComponent from './components/login';
 import Header from './components/header';
 import RegisterComponent from './components/register';
+import HomePage from './components/homepage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from './utils/PrivateRoute';
@@ -17,7 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={
             <PrivateRoute>
-              <p>Home page!</p>
+              <HomePage />
             </PrivateRoute>
           } />
           <Route element={<LoginComponent />} path="/login"  />

@@ -1,18 +1,21 @@
-from os import access
-from flask import Flask, request, Response
+from flask import Flask, request, Response, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask_cors import CORS
-from flask_jwt_extended import create_access_token
+from flask_jwt_extended import create_access_token, create_refresh_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
 from psycopg2 import IntegrityError
 import bcrypt
 from werkzeug.utils import secure_filename
+from datetime import timedelta
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:04191961Jt!@localhost/ReceiKeep'
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=1)
+app.config["JWT_REFRESH_TOKEN_EXPIRES"] = timedelta(days=30)
 db = SQLAlchemy(app)
 CORS(app)
 app.config["JWT_SECRET_KEY"] = "04191961Jt!"  # Change this!
@@ -36,7 +39,7 @@ class User(db.Model):
     username = db.Column(db.String(15), nullable=False)
     password = db.Column(db.String(250), nullable=False)
     email = db.Column(db.String(100), nullable = False)
-    user_images = db.relationship("Image", backref='user')
+    # user_images = db.relationship("Image", backref='user')
     
 
     def __repr__(self):
@@ -100,8 +103,9 @@ def register():
         db.session.add(new_user)
         db.session.commit()
 
-        access_token = create_access_token(identity={"username":username, "email":email})
-        return {"access_token":access_token}, 200
+        access_token = create_access_token(identity={"username":username})
+        refresh_token = create_refresh_token(identity={"username": username})
+        return {"access_token":access_token, "refresh_token":refresh_token}, 200
 
 
     except IntegrityError:
@@ -125,15 +129,17 @@ def login():
     if not user:
         return "User not found", 404
     if bcrypt.checkpw(password.encode('utf-8'), user.password.encode('utf-8')):
-        access_token = create_access_token(identity={"username": user.username, "email":user.email})
-        return {"access_token": access_token}, 200
+        access_token = create_access_token(identity={"username": user.username})
+        refresh_token = create_refresh_token(identity={"username": user.username})
+        return {"access_token": access_token, "refresh_token":refresh_token}, 200
     else:
         return "Invalid Login Info, Please try again.", 400
 
 @app.route("/images", methods=["GET"])
-@jwt_required
+@jwt_required(refresh=True)
 def allImages():
     '''
+    current_user = get_jwt_identity()
     if request.method == "GET":
         images = Image.query.order_by(Image.created_at.asc()).all()
         image_list = [format_image(x) for x in images]
@@ -142,7 +148,7 @@ def allImages():
     pass
 
 @app.route("/image/<int:id>", methods=["GET","DELETE"])
-@jwt_required
+@jwt_required(refresh=True)
 def images_Id():
     '''
     if request.method == GET:

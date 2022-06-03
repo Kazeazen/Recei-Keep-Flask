@@ -5,5 +5,11 @@ import AuthContext from '../context/AuthContext'
 
 const HomePage = () => {
     let [images, setImages] = useState([])
-    let [authToken, logoutUser] = useContext(AuthContext)
+    let {logoutUser, user} = useContext(AuthContext)
+
+    return (
+        <h3>Hello {user}</h3> 
+    )
 }
+
+export default HomePage;
