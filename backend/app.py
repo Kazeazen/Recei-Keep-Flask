@@ -1,3 +1,7 @@
+'''
+Author: James Thomason
+Date: 6/3/2022
+'''
 from flask import Flask, request, Response, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -14,7 +18,7 @@ from datetime import timedelta
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:04191961Jt!@localhost/ReceiKeep'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=1)
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(days=1)
 app.config["JWT_REFRESH_TOKEN_EXPIRES"] = timedelta(days=30)
 db = SQLAlchemy(app)
 CORS(app)
@@ -39,7 +43,7 @@ class User(db.Model):
     username = db.Column(db.String(15), nullable=False)
     password = db.Column(db.String(250), nullable=False)
     email = db.Column(db.String(100), nullable = False)
-    # user_images = db.relationship("Image", backref='user')
+    user_images = db.relationship("Image", backref='user')
     
 
     def __repr__(self):
@@ -50,32 +54,24 @@ class User(db.Model):
         self.password = password
         self.email = email
 
-'''class Image(db.Model):
+class Image(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     parent_id = db.Column(db.Integer, db.ForeignKey("User.id"))
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     img = db.Column(db.Text, unique=True, nullable=False)
     name = db.Column(db.Text, nullable=False)
     mimetype = db.Column(db.Text, nullable=False)
-    
-    pass'''
-class Images(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    img = db.Column(db.Text, unique=True, nullable=False)
-    name = db.Column(db.Text, nullable=False)
-    mimetype = db.Column(db.Text, nullable=False)
+
 
 #  end of models
-# -------------------------------------------------------------------------------
-# Formatting Functions
-def format_event(event):
-    return {
-        'id': event.id,
-        "created_at": event.created_at
-    }
 # ------------------------------------------------------------------------------
 # Start of routes
+@app.route("/refresh", methods=["POST"])
+@jwt_required(refresh=True)
+def refreshToken():
+    identity = get_jwt_identity()
+    access_token = create_access_token(identity=identity)
+    return {"access_token":access_token, "identity":identity["username"]}, 200
 
 @app.route("/register", methods=["POST"])
 def register():
@@ -136,7 +132,7 @@ def login():
         return "Invalid Login Info, Please try again.", 400
 
 @app.route("/images", methods=["GET"])
-@jwt_required(refresh=True)
+@jwt_required()
 def allImages():
     '''
     current_user = get_jwt_identity()
@@ -148,7 +144,7 @@ def allImages():
     pass
 
 @app.route("/image/<int:id>", methods=["GET","DELETE"])
-@jwt_required(refresh=True)
+@jwt_required()
 def images_Id():
     '''
     if request.method == GET:
@@ -168,7 +164,7 @@ def uploadImages():
     
     filename = secure_filename(pic.filename)
     mimetype = pic.mimetype
-    img = Images(img=pic.read(), mimetype=mimetype, name=filename)
+    img = Image(img=pic.read(), mimetype=mimetype, name=filename)
     db.session.add(img)
     db.session.commit()
 
@@ -176,55 +172,12 @@ def uploadImages():
 
 @app.route("/images/<int:id>", methods=["GET"])
 def getImages():
-    img = Images.query.filter_by(id=id)
+    img = Image.query.filter_by(id=id)
     if not img:
         return "Image not found with id", 404
     return Response(data=img.img, mimetype=img.mimetype)
 
 # End testing image upload
-    
-
-# Routes that will not end up in the final project
-@app.route("/eventAPI", methods=["GET","POST"])
-def event():
-    if request.method == "GET":
-        events = Event.query.order_by(Event.id.asc()).all()
-        event_list = [format_event(x) for x in events]
-        return {'events': event_list}
-    elif request.method == "POST":
-        description = request.json['description']
-        event = Event(description)
-        db.session.add(event)
-        db.session.commit()
-        return format_event(event)
-
-# Getting single event
-@app.route("/eventAPI/<id>", methods=["GET","PUT","DELETE"])
-def events(id):
-
-    
-    if request.method == "GET":
-        event = Event.query.filter_by(id = id).one() # or .first(), returns first result.
-        formatted = format_event(event)
-        return {"Specific Event": formatted}
-
-    
-    if request.method == "DELETE":
-        event = Event.query.filter_by(id = id).one()
-        db.session.delete(event)
-        db.session.commit()
-        return f'Event {id} has been deleted'
-
-    if request.method == "PUT":
-        event = Event.query.filter_by(id = id)
-        description = request.json['description']
-        event.update(dict(
-            description = description,
-            created_at = datetime.utcnow()
-        ))
-        db.session.commit()
-        return {'Event': format_event(event.one())}
-
 
 if __name__ == "__main__":
     app.run(debug=True)
