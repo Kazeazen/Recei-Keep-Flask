@@ -7,3 +7,22 @@ Users will be able to upload any type of picture that they want, however, for th
 I will most definitely be revisiting this idea in the future once I've gained professional work experience and with a much wider knowledge base.
 
 Disclaimer The uploaded photos will NOT be used to retrieve personal information, or extract any type of information at all. This is purely a personal side project for me to learn more about Backend Development/DB's/Auth + have some functional project that I can use in the future possibly.
+
+To use (Nobody should be able to use since they dont have the secret key for the app.config nor the passcode for the postgre db):
+clone the repo and create two terminals
+
+In the first terminal: 
+cd backend
+python app.py 
+(That should get the backend server up and running)
+
+In second terminal:
+cd frontend2
+npm start
+
+After that, the website should be pulled up in your home browser (I can't guarantee that everything will work properly.)
+TODO: 
+Create Search function
+Allow password resets
+Minor QA checking
+Unit tests for the backend
