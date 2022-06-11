@@ -7,5 +7,9 @@ node_modules
 # Ignore backend secrets file
 *secrets_for_backend.py
 
-# Ignore Uploads folder
-*Uploads
+# Ignore Uploads folder contents
+Uploads/
+
+# Exception
+!Uploads/.gitkeep
+
