@@ -13,13 +13,17 @@
   width: 70%;
   padding: 10px;
   text-align: center;
+  height: auto;
 }
 
-body > #root > div {
-  height: 100vh;
+body > #root > .center {
   background-color: #36486b;
+  height: 100vh;
+  overflow-x: auto;
 }
 
 #root {
   background-color: whitesmoke;
+  
 }
+

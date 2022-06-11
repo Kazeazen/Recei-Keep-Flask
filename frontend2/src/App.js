@@ -1,13 +1,14 @@
-
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import LoginComponent from './components/login';
 import Header from './components/header';
 import RegisterComponent from './components/register';
 import HomePage from './components/homepage';
+import Settings from './components/settings';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from './utils/PrivateRoute';
+
 function App() {
   return (
     <div className="center">
@@ -19,6 +20,11 @@ function App() {
           <Route path="/" element={
             <PrivateRoute>
               <HomePage />
+            </PrivateRoute>
+          } />
+          <Route path="/settings" element={
+            <PrivateRoute>
+              <Settings />
             </PrivateRoute>
           } />
           <Route element={<LoginComponent />} path="/login"  />

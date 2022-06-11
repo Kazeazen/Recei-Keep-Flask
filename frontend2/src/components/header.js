@@ -8,18 +8,24 @@ const Header = () => {
     
     return (
         <div className={styles.headers}>
-            <span> | </span>
-            <Link to="/">Home</Link>
-            <span> | </span>
             { authToken ? (
+                <div className={styles.headers}>
+                <span> | </span>
+                <Link to="/">Home</Link>
+                <span> | </span>
+                <Link to="/settings">Settings</Link>
+                <span> | </span>
                 <Link to="#" onClick={logoutUser}> Logout</Link>
+                </div>
             ) : (
+                <div className={styles.headers}>
+                <span> | </span>
                 <Link to="/login"> Login</Link>
+                <span> | </span>
+                <Link to="/register">Register</Link>
+                <span> | </span>
+                </div>
             )}
-            <span> | </span>
-            <Link to="/register">Register</Link>
-            <span> | </span>
-            <Link to="/profile">Settings</Link>
         </div>
 
     )

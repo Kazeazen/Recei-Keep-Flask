@@ -8,11 +8,11 @@ const AuthContext = createContext();
 export default AuthContext;
 
 export const AuthProvider = ({children}) => {
-
     const [authToken, setAuthToken] = useState(() => localStorage.getItem('authToken') ? JSON.parse(localStorage.getItem('authToken')) : null)
     const [user, setUser] = useState(() => localStorage.getItem("authToken") ? jwtDecode(localStorage.getItem("authToken"))["sub"]["username"] : null)
     const navigate = useNavigate();
-    
+    const [images, setImages] = useState([])
+
     let loginUser = async(e) => {
         e.preventDefault()
         let data = await axios.post("http://localhost:5000/login", {
@@ -32,7 +32,20 @@ export const AuthProvider = ({children}) => {
         }
     }
 
-    // let registerUser {handles user registration, redirects back to login}
+    let getImages = async() => {
+        await axios.get("http://localhost:5000/images", {
+            headers: {
+                "Authorization":`Bearer ${authToken.access_token}`
+            },
+        })
+        .then((res) => {
+            setImages(res.data.images)
+        })
+        .catch((error) => {
+            console.error(error)
+        })
+    }
+
 
     let registerUser = async(e) => {
         e.preventDefault()
@@ -65,7 +78,9 @@ export const AuthProvider = ({children}) => {
         authToken:authToken,
         logoutUser:logoutUser,
         registerUser:registerUser,
-        user: user
+        user: user,
+        getImages:getImages,
+        images:images,
     }
 
 

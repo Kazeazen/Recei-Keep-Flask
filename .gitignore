@@ -3,3 +3,9 @@ node_modules
 
 # Ignore all text files
 *.txt
+
+# Ignore backend secrets file
+*secrets_for_backend.py
+
+# Ignore Uploads folder
+*Uploads
