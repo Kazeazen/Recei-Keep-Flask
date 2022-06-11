@@ -11,18 +11,18 @@ Disclaimer The uploaded photos will NOT be used to retrieve personal information
 To use (Nobody should be able to use since they dont have the secret key for the app.config nor the passcode for the postgre db):
 clone the repo and create two terminals
 
-In the first terminal: 
+In the first terminal: <br>
 cd backend <br>
 python app.py <br>
 (That should get the backend server up and running)
 
-In second terminal:
-cd frontend2
-npm start
+In second terminal: <br>
+cd frontend2 <br>
+npm start <br> 
 
-After that, the website should be pulled up in your home browser (I can't guarantee that everything will work properly.)
-TODO: 
-Create Search function
-Allow password resets
-Minor QA checking
-Unit tests for the backend
+After that, the website should be pulled up in your home browser (I can't guarantee that everything will work properly.) <br>
+TODO: <br
+Create Search function <br>
+Allow password resets <br>
+Minor QA checking <br>
+Unit tests for the backend <br>
