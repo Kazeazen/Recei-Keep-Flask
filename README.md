@@ -22,7 +22,9 @@ npm start <br>
 
 
 <h1> Login Page </h1>
-![b1ed1e82f72042018a22c4b610d326c1](https://user-images.githubusercontent.com/91567133/173208429-5858c5a2-e147-4b42-8a27-2ceb37c05108.png)
+<img src="https://user-images.githubusercontent.com/91567133/173208454-ede1e889-d137-4175-9921-4ce6989342c2.png" width="350">
+
+
 
 
 <h1> Registration Page </h1>
