@@ -12,8 +12,8 @@ To use (Nobody should be able to use since they dont have the secret key for the
 clone the repo and create two terminals
 
 In the first terminal: 
-cd backend
-python app.py 
+cd backend <br>
+python app.py <br>
 (That should get the backend server up and running)
 
 In second terminal:
