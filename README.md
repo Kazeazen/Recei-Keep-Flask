@@ -20,6 +20,15 @@ In second terminal: <br>
 cd frontend2 <br>
 npm start <br> 
 
+
+<h1> Login Page </h1>
+![image](https://user-images.githubusercontent.com/91567133/173208401-ab48d069-2db4-43fd-9803-709c8c2862f3.png)
+
+<h1> Registration Page </h1>
+![image](https://user-images.githubusercontent.com/91567133/173208409-96580396-8ade-44db-81e2-bb800cb309ff.png)
+
+
+
 After that, the website should be pulled up in your home browser (I can't guarantee that everything will work properly.) <br>
 TODO: <br
 Create Search function <br>
