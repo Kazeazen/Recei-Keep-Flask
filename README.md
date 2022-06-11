@@ -22,13 +22,13 @@ npm start <br>
 After that, the website should be pulled up in your home browser (I can't guarantee that everything will work properly.) <br>
 
 <h1> Login Page </h1>
-<img src="https://user-images.githubusercontent.com/91567133/173208454-ede1e889-d137-4175-9921-4ce6989342c2.png" width="750" height="350">
+<img src="https://user-images.githubusercontent.com/91567133/173208454-ede1e889-d137-4175-9921-4ce6989342c2.png" width="550" height="350">
 
 
 
 
 <h1> Registration Page </h1>
-<img src="https://user-images.githubusercontent.com/91567133/173208409-96580396-8ade-44db-81e2-bb800cb309ff.png" width="750" height="350">
+<img src="https://user-images.githubusercontent.com/91567133/173208409-96580396-8ade-44db-81e2-bb800cb309ff.png" width="550" height="350">
 
 <br>
 TODO: <br
