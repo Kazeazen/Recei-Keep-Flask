@@ -1,0 +1,52 @@
+.photoUpload {
+    width: 80%;
+    margin: auto;
+}
+.photoUpload input {
+    display: inline-block;
+    margin-top: .7em;
+
+}
+
+.uploadText {
+    font-size: 25px;
+    color: #fefbd8;
+}
+
+.welcomeText {
+    font-size: 50px;
+    color: #fefbd8;
+    margin-top: 15px;
+}
+
+.picSize {
+    width: 20px;
+    height: 20px;
+}
+
+
+.cards {
+    margin: 25px;
+    margin-left: 50px;
+}
+
+.profileContainer h1 {
+    font-size: 75px;
+    color:whitesmoke;
+}
+
+.innerProfileContainer {
+    width: 60%;
+    height: 45vh;
+    display: block;
+    color: whitesmoke;
+    padding: 65px;
+}
+
+.searchWidth {
+    width: 50%;
+    margin: auto;
+    background-color: whitesmoke;
+}
+
+
