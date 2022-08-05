@@ -34,7 +34,7 @@ After that, the website should be pulled up in your home browser (I can't guaran
 <img src="https://i.gyazo.com/b324a957ea322c05efe7cf04275ad119.png" width="550" height="350">
 
 <h1> Settings Page </h1>
-img src="https://i.gyazo.com/28415e468278b28766a87fa9f2e2f67e.png" width="550" height="350">
+<img src="https://i.gyazo.com/28415e468278b28766a87fa9f2e2f67e.png" width="550" height="350">
 <br>
 TODO: <br
 Create Search function <br>
