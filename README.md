@@ -1,6 +1,6 @@
 # Recei-Keep-Flask
 
-A Python/Flask, PostgreSQL, React based Project that allows Users to upload pictures of, ideally, their receipts. Users will be able to set Tags on their uploaded receipts, for example, if the receipt was from a gas station, the user will be able to create a new tag for the specific gas station, or a wider topic covering tag like "Gas". Letting the user create new tags and tag their receipts allows for easy search/filtering/organization. Eventually the user will be able to make separate "Lists" of their receipts, to have even more organization.
+A Flask, PostgreSQL, React based Project that allows Users to upload pictures of, ideally, their receipts. Users will be able to set Tags on their uploaded receipts, for example, if the receipt was from a gas station, the user will be able to create a new tag for the specific gas station, or a wider topic covering tag like "Gas". Letting the user create new tags and tag their receipts allows for easy search/filtering/organization. Eventually the user will be able to make separate "Lists" of their receipts, to have even more organization.
 
 Users will be able to upload any type of picture that they want, however, for this project specifically, Receipts would be the most ideal type of media that is uploaded.
 
@@ -29,6 +29,9 @@ After that, the website should be pulled up in your home browser (I can't guaran
 
 <h1> Registration Page </h1>
 <img src="https://user-images.githubusercontent.com/91567133/173208409-96580396-8ade-44db-81e2-bb800cb309ff.png" width="550" height="350">
+
+<h1> Home Page </h1>
+<img src="https://gyazo.com/b324a957ea322c05efe7cf04275ad119" width="550" height="350">
 
 <br>
 TODO: <br
