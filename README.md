@@ -31,7 +31,7 @@ After that, the website should be pulled up in your home browser (I can't guaran
 <img src="https://user-images.githubusercontent.com/91567133/173208409-96580396-8ade-44db-81e2-bb800cb309ff.png" width="550" height="350">
 
 <h1> Home Page </h1>
-<img src="https://gyazo.com/b324a957ea322c05efe7cf04275ad119" width="550" height="350">
+<img src="https://i.gyazo.com/b324a957ea322c05efe7cf04275ad119.png" width="550" height="350">
 
 <br>
 TODO: <br
