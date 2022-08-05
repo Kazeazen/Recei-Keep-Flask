@@ -30,8 +30,11 @@ After that, the website should be pulled up in your home browser (I can't guaran
 <h1> Registration Page </h1>
 <img src="https://user-images.githubusercontent.com/91567133/173208409-96580396-8ade-44db-81e2-bb800cb309ff.png" width="550" height="350">
 
-<h1> Home Page </h1>
+<h1> Home Page No Content</h1>
 <img src="https://i.gyazo.com/b324a957ea322c05efe7cf04275ad119.png" width="550" height="350">
+
+<h1> Home Page With Content</h1>
+<img src="https://i.gyazo.com/6d3c377e72dc647ae65e352b3dd7e476.png" width="525" height="350">
 
 <h1> Settings Page </h1>
 <img src="https://i.gyazo.com/28415e468278b28766a87fa9f2e2f67e.png" width="550" height="350">
