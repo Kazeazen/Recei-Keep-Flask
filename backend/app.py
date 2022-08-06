@@ -78,6 +78,7 @@ def refreshToken():
     access_token = create_access_token(identity=identity)
     return {"access_token":access_token, "identity":identity["username"]}, 200
 
+# Creating a new user
 @app.route("/register", methods=["POST"])
 def register():
     try:
@@ -115,6 +116,7 @@ def register():
     except AttributeError:
         return "Please provide a valid username and password in the JSON request body", 400
 
+# Logging in 
 @app.route("/login", methods=["POST"])
 def login():
     
@@ -136,6 +138,7 @@ def login():
     else:
         return "Invalid Login Info, Please try again.", 400
 
+# Getting all images or uploading a new one
 @app.route("/images", methods=["GET", "POST"])
 @jwt_required()
 def allImages():
@@ -162,6 +165,7 @@ def allImages():
         db.session.commit()
     return "Image has been uploaded", 200
 
+# Getting a specific image, deleting a specific image, or updating the image info
 @app.route("/images/<string:id>", methods=["GET", "DELETE", "PUT"])
 @jwt_required()
 def getImages(id):
@@ -189,7 +193,16 @@ def getImages(id):
         return "Success", 200
 
     if request.method == "PUT":
-        pass
+        user = User.query.filter_by(username=current_user["username"]).first()
+        img = Image.query.filter_by(id=image_id, parent_id = user.id).first()
+        new_name = request.json.get("name", None)
+        if not new_name:
+            return "Improper data sent over, only accepts name in JSON", 404
+        if not img or user.id != img.parent_id:
+            return "Image not found with id, or wrong user is currently logged in.", 404
+        img.name = new_name
+        db.session.commit()
+        return f'Image {img.id} has been updated.'
 
 if __name__ == "__main__":
     app.run(debug=True)
